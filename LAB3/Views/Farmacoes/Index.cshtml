@@ -1,0 +1,69 @@
+﻿@model IEnumerable<LAB3.Models.Farmaco>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1 style="color:lightgreen">Inventario</h1>
+<p>
+    Realice la búsqueda por nombre que desea realizar(Asegurarse que el nombre sea exacto y sin espacios al final y al comienzo)
+</p>
+<form asp-controller="Farmacoes" asp-action="Search">
+    <div class="input-group mb-3">
+        <input name="nombreFarmaco" type="text" class="form-control" placeholder="Escribir" aria-label="x" aria-describedby="basic-addon2">
+        <input type="submit" value="Buscar" class="btn btn-outline-dark">
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Farmaco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripción_Farmaco)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Casa_Productora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Existencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre_Farmaco)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Descripción_Farmaco)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Casa_Productora)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Existencia)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+    <td>
+
+        @Html.ActionLink("AgregarPedido", "AgregarPedido", new { id = item.Id })
+
+    </td>
+</tr>
+}
+    </tbody>
+</table>

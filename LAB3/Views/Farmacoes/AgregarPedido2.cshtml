@@ -1,0 +1,44 @@
+﻿@model LAB3.Models.PedidosFarmacos
+
+@{ ViewData["Title"] = "AgregarPedido2"; }
+
+<h1 style="color:lightgreen">Agregar Pedido</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AgregarPedido2">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NombreDelCliente" class="control-label"></label>
+                <input asp-for="NombreDelCliente" class="form-control" />
+                <span asp-validation-for="NombreDelCliente" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dirrecion" class="control-label"></label>
+                <input asp-for="Dirrecion" class="form-control" />
+                <span asp-validation-for="Dirrecion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nit" class="control-label"></label>
+                <input asp-for="Nit" class="form-control" />
+                <span asp-validation-for="Nit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cantidad" class="control-label"></label>
+                <input asp-for="Cantidad" class="form-control" type="number" min="1" max="15">
+                <span asp-validation-for="Cantidad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

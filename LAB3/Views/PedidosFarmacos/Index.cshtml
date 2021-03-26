@@ -1,0 +1,75 @@
+﻿@model IEnumerable<LAB3.Models.PedidosFarmacos>
+
+@{ ViewData["Title"] = "Index"; }
+
+<h1>Carrito :D</h1>
+<div class="input-group mb-3">
+
+    <form asp-controller="Farmacoes" asp-action="Compra_Finalizada">
+        <div class="form-group">
+            <div style="text-align: center;"><button style="position: absolute;top: 5%;Left: 70%;">Finalizar Compra</button></div>
+        </div>
+    </form>
+</div>
+<div class="input-group mb-3">
+
+    <form asp-controller="Farmacoes" asp-action="Index">
+        <div class="form-group">
+            <div style="text-align: center;"><button style="position: absolute;top: 5%;Left: 70%;">Agregar otro producto</button></div>
+        </div>
+    </form>
+    <div>
+        @{ double total = 0;
+            foreach (var farmacox in Model)
+            {
+
+                total += Math.Round(farmacox.Precio * farmacox.Cantidad);
+
+            } }
+
+    </div>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Id)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Cantidad)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Precio)
+    </td>
+</tr>}
+    </tbody>
+</table>
+<div>
+    <h4>Total ($):</h4>
+    @total
+</div>
+
