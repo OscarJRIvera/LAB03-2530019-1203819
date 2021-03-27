@@ -6,8 +6,9 @@ namespace ArbolBinario
 {
     public class AVL<T> : ArbolBinario<T>
     {
-        public AVL(Comparador<T> Funcomparador) : base(Funcomparador) //Esta es la funcion
+        public AVL(Comparador<T> Funcomparador) : base(Funcomparador)  //Esta es la funcion
         {
+
         }
         public new void Add(T dato)
         {
@@ -39,13 +40,14 @@ namespace ArbolBinario
             FactorDeEquilibrio = alturaI - alturaD;
             if (FactorDeEquilibrio > 1)
             {
+                
                 RotacionDerecha(nodoPivote, nodoPadrePivote);
             }
             if (FactorDeEquilibrio < -1)
             {
+               
                 RotacionIzquierda(nodoPivote, nodoPadrePivote);
             }
-          int i = 69;
         }
         private Nodo<T>[] Pivote(Nodo<T> CurrentRoot, Nodo<T> padre)
         {
@@ -80,14 +82,14 @@ namespace ArbolBinario
                 return null;
             }
         }
-
+       
         private void RotacionIzquierda(Nodo<T> Pivote, Nodo<T> padrePivote)
         {
             if (Pivote == padrePivote.Left)
             {
                 Nodo<T> i = new Nodo<T>();
                 Nodo<T> f = new Nodo<T>();
-                i =Pivote.Right.Left;
+                i = Pivote.Right.Left;
                 f = Pivote;
                 padrePivote.Left = Pivote.Right;
                 Pivote = padrePivote.Left;
