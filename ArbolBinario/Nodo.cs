@@ -30,6 +30,6 @@ namespace ArbolBinario
                 return Left != null && Right != null;
             }
         }
-        
+
     }
 }
