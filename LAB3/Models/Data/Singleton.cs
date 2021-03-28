@@ -11,7 +11,6 @@ namespace LAB3.Models.Data
     public class Singleton
     {
         private readonly static Singleton _instance = new Singleton();
-        
         public AVL<LlaveArbol> Arbol_Farmacos;
         public DoubleLinkedList<Farmaco> List2;//mi lista aqui 
         public DoubleLinkedList<PedidosFarmacos> Pedidos;

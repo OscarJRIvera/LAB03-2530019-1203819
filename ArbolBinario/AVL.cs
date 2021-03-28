@@ -8,6 +8,7 @@ namespace ArbolBinario
     {
         public AVL(Comparador<T> Funcomparador) : base(Funcomparador)  //Esta es la funcion
         {
+
         }
 
         public new void Add(T dato)
@@ -51,7 +52,6 @@ namespace ArbolBinario
                 RotacionIzquierda(nodoPivote, nodoPadrePivote);
             }
 
-
         }
         private Nodo<T>[] Pivote(Nodo<T> CurrentRoot, Nodo<T> padre)
         {
@@ -86,7 +86,7 @@ namespace ArbolBinario
                 return null;
             }
         }
-        private void VerificarRotaciondobble(Nodo<T> nodoPivote, Nodo<T> PadrePivote, int x)
+private void VerificarRotaciondobble(Nodo<T> nodoPivote, Nodo<T> PadrePivote, int x)
         {
             var alturaI = 0;
             var alturaD = 0;
