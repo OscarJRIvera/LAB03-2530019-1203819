@@ -10,6 +10,7 @@ namespace ArbolBinario
         {
 
         }
+
         public new void Add(T dato)
         {
             base.Add(dato);
@@ -40,14 +41,17 @@ namespace ArbolBinario
             FactorDeEquilibrio = alturaI - alturaD;
             if (FactorDeEquilibrio > 1)
             {
-                
+                int derecha = 1;
+                VerificarRotaciondobble(nodoPivote.Left, nodoPivote, derecha);
                 RotacionDerecha(nodoPivote, nodoPadrePivote);
             }
             if (FactorDeEquilibrio < -1)
             {
-               
+                int izquirda = -1;
+                VerificarRotaciondobble(nodoPivote.Right, nodoPivote, izquirda);
                 RotacionIzquierda(nodoPivote, nodoPadrePivote);
             }
+
         }
         private Nodo<T>[] Pivote(Nodo<T> CurrentRoot, Nodo<T> padre)
         {
@@ -82,7 +86,36 @@ namespace ArbolBinario
                 return null;
             }
         }
-       
+private void VerificarRotaciondobble(Nodo<T> nodoPivote, Nodo<T> PadrePivote, int x)
+        {
+            var alturaI = 0;
+            var alturaD = 0;
+            if (nodoPivote.Left != null)
+            {
+                alturaI = Altura(nodoPivote.Left);
+            }
+            if (nodoPivote.Right != null)
+            {
+                alturaD = Altura(nodoPivote.Right);
+            }
+            var FactorDeEquilibrio = 0;
+            FactorDeEquilibrio = alturaI - alturaD;
+            if (x == 1)
+            {
+                if (FactorDeEquilibrio == -1)
+                {
+                    RotacionIzquierda(nodoPivote, PadrePivote);
+                }
+            }
+            else
+            {
+                if (FactorDeEquilibrio == 1)
+                {
+                    RotacionDerecha(nodoPivote, PadrePivote);
+                }
+            }
+        }
+
         private void RotacionIzquierda(Nodo<T> Pivote, Nodo<T> padrePivote)
         {
             if (Pivote == padrePivote.Left)
